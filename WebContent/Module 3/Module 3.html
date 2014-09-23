@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+
+    <title>Development Seminar</title>
+    <link href="Module 3.css" rel="stylesheet" type="text/css">
+    <script src="Module 3.js"></script>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <img src="../jhu.jpg">
+
+        <h3>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h3>
+
+        <form name="info" action="Module 3.jsp" onsubmit="return validateForm()" method="post">
+            <div class="input">
+                <h4>Contact Information</h4>
+                <label>Name:</label> <input name="fullName" type="text"><br>
+                <label>E-mail:</label> <input name="email" type="text">
+            </div>
+
+            <div class="input">
+                <h4>Select your Courses</h4>
+                <select multiple name="courses">
+                    <option value="A4 - Web Servces">A4 - Web Services</option>
+                    <option value="A1 - J2EE Design Patterns">A1 - J2EE Design Patterns</option>
+                    <option value="A3 - Service Oriented Architectures">A3 - Service Oriented Architectures</option>
+                    <option value="A4 - Enterprise Service Bus">A4 - Enterprise Service Bus</option>
+                    <option value="A6 - Secure Messaging">A6 - Secure Messaging</option>
+                    <option value="A5 - Web Services Security">A5 - Web Services Security</option>
+                </select>
+            </div>
+
+            <div class="input">
+                <h4>Employment Status</h4>
+                <input name="employmentStatus" type="radio" value="JHU Employee">JHU Employee
+                <input name="employmentStatus" type="radio" value="JHU Student">JHU Student
+                <input name="employmentStatus" type="radio" value="Speaker">Speaker 
+                <input name="employmentStatus" type="radio" value="Other">Other
+            </div>
+
+            <div class="input">
+                <h4 class="additional">Additional Fees and Charges</h4>
+                <input name="hotel" type="checkbox" value="hotel">Hotel Accommodation (Conference Guest Special Fee - Parking Included)<br>
+                <input name="parking" type="checkbox" value="parking">Parking Permit<br>
+            </div>
+
+            <input id="submit" type="submit" value="Compute Seminar Costs">
+        </form>
+
+    </div>
+
+</body>
+</html>
