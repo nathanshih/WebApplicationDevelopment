@@ -5,8 +5,8 @@
 <head>
 	<meta charset="ISO-8859-1">
     <title>Development Seminar</title>
-    <link href="Module 3.css" rel="stylesheet" type="text/css">
-    <script src="Module 3.js"></script>
+    <link href="hw3.css" rel="stylesheet" type="text/css">
+    <script src="hw3.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
     %>
 
     <div class="main">
-        <img src="jhu.jpg">
+        <img src="../images/jhu.jpg">
 
         <h3>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h3>
         

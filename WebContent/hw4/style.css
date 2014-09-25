@@ -1,0 +1,88 @@
+body {
+	background-color: black;
+}
+
+img {
+	width: 650px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+div[class=main] {	
+	width: 650px;
+	background-color: #FFFFD0;
+	margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+div[class=input] {
+	border: 1px solid #a1a1a1;
+	padding: 10px;
+    width: 500px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+div[class=output] {
+	padding: 10px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+	padding-bottom: 20px;
+	text-align: center;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+h4 {
+	margin-top: -20px;
+	background-color: #FFFFD0;
+	width: 145px;
+	text-align: center;
+}
+
+h4[class=additional] {
+	width: 200px;
+}
+
+select {
+	height: 100px;
+}
+
+label {
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+}
+
+input[type=submit] {
+	display: inline-block;
+	width: auto;
+	margin-left: 65px;
+	margin-bottom: 20px;
+}
+
+table {
+	padding: 10px;
+	border-collapse: collapse;
+	width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, td, th {
+	border-bottom: 1px solid #a1a1a1;
+}
+
+th {
+	text-align: center;
+}
+
+td[class="money"] {
+	text-align: right;
+}
