@@ -3,14 +3,13 @@
  */
 package hw4.service;
 
-import hw4.constants.COSTS;
 import hw4.model.CostInfo;
 import hw4.model.RegistrationInfo;
 
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 
+ * The implementation of the business logic.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
@@ -55,13 +54,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 		
 		String employmentStatus = registrationInfo.getEmploymentStatus();
 		if (employmentStatus.equals("JHU Employee")) {
-    		costInfo.setEmployeeStatusCost(COSTS.EMPLOYEE);
+    		costInfo.setEmployeeStatusCost(CostInfo.EMPLOYEE);
     	} else if (employmentStatus.equals("JHU Student")) {
-    		costInfo.setEmployeeStatusCost(COSTS.STUDENT);
+    		costInfo.setEmployeeStatusCost(CostInfo.STUDENT);
     	} else if (employmentStatus.equals("Speaker")) {
-    		costInfo.setEmployeeStatusCost(COSTS.SPEAKER);
+    		costInfo.setEmployeeStatusCost(CostInfo.SPEAKER);
     	} else if (employmentStatus.equals("Other")) {
-    		costInfo.setEmployeeStatusCost(COSTS.OTHER);
+    		costInfo.setEmployeeStatusCost(CostInfo.OTHER);
     	}
     	
     	// calculate total cost
@@ -73,12 +72,12 @@ public class RegistrationServiceImpl implements RegistrationService {
     	
     	// if selected hotel, add to total
     	if (!StringUtils.isEmpty(registrationInfo.getHotel())) {
-    		total = total + COSTS.HOTEL;
+    		total = total + CostInfo.HOTEL;
     	}
     	
     	// if selected parking, add to total
     	if (!StringUtils.isEmpty(registrationInfo.getParking())) {
-    		total = total + COSTS.PARKING;
+    		total = total + CostInfo.PARKING;
     	}
 		
     	costInfo.setTotal(total);

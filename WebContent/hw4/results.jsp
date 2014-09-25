@@ -12,6 +12,8 @@
 <body>
 	
 	<%@ page import="hw4.model.RegistrationInfo" %>
+	<%@	page import="hw4.model.CostInfo" %>
+	
 	<%
 		// get attributes from the request
 			RegistrationInfo registrationInfo = (RegistrationInfo) request.getAttribute("registrationInfo");
@@ -48,7 +50,7 @@
         	<tr>
         		<td><%= courses[i]%></td>
         		<td></td>
-        		<td class="money">$0</td>
+        		<td class="money">$<%= registrationInfo.getCostInfo().getEmployeeStatusCost() %>0</td>
         	</tr>
         <%
         	}
@@ -58,19 +60,31 @@
 		<br>
 		
 		<table>
-		
+		<% 
+			// if the user selected a hotel, add that as a table record
+			if (registrationInfo.getHotel() != null) {
+		%>
 			<tr>
 				<td>Hotel Accommodation</td>
-				<td class="money">$hotelCost</td>
-		
+				<td class="money">$<%= CostInfo.HOTEL %>0</td>
+			</tr>
+		<%
+			}
+		%>
+		<% 
+			// if the user selected parking, add that as a table record
+			if (registrationInfo.getParking() != null) {
+		%>
 			<tr>
 				<td>Parking</td>
-				<td class="money">$parkingCost</td>
+				<td class="money">$<%= CostInfo.PARKING %>0</td>
 			</tr>
-
+		<%
+			}
+		%>
 			<tr>
 				<td></td>
-				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$total</b></td>
+				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$<%= registrationInfo.getCostInfo().getTotal() %>0</b></td>
 			</tr>
 		</table>
 		

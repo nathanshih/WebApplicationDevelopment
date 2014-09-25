@@ -1,6 +1,7 @@
 package hw4.model;
 
 /**
+ * This model class holds information relevant to the registration information.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
