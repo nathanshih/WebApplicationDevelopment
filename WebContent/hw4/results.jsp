@@ -16,7 +16,7 @@
 	
 	<%
 		// get attributes from the request
-			RegistrationInfo registrationInfo = (RegistrationInfo) request.getAttribute("registrationInfo");
+		RegistrationInfo registrationInfo = (RegistrationInfo) request.getAttribute("registrationInfo");
 	%>
 	
     <div class="main">

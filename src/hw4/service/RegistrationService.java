@@ -3,7 +3,7 @@ package hw4.service;
 import hw4.model.RegistrationInfo;
 
 /**
- * The RegistrationService interface provides entry points to the business logic.
+ * The RegistrationService interface provides entry points to the registration service business logic.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014

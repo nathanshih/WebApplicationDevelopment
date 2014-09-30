@@ -18,7 +18,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
 
 /**
- * RegistrationServlet handling all requests and responses. This is the main entry point to registration service.
+ * RegistrationServlet handling all requests and responses. This is the main entry point to registration servlet.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
@@ -76,7 +76,7 @@ public class RegistrationServlet extends HttpServlet {
 			// send the registration information 
 			request.setAttribute("registrationInfo", registrationService.getRegistrationInfo());
 			
-			// forward the response		
+			// forward the request to results.jsp		
 			String url = "/hw4/results.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 			dispatcher.forward(request, response);
