@@ -1,13 +1,17 @@
 package devseminar.model;
 
+import java.io.Serializable;
+
 /**
  * This model class holds information relevant to the registration information.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-public class RegistrationInfo {
+public class RegistrationInfo implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 	private String email;
 	private String[] courses;

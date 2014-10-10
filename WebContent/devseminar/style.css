@@ -67,6 +67,10 @@ input[type=submit] {
 	margin-bottom: 20px;
 }
 
+button {
+    float: right;
+}
+
 table {
 	padding: 10px;
 	border-collapse: collapse;

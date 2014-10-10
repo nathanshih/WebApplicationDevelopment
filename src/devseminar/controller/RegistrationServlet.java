@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHeaders;
@@ -57,7 +58,7 @@ public class RegistrationServlet extends HttpServlet {
 		String hotel = request.getParameter("hotel");
 		String parking = request.getParameter("parking");
 		
-		// based on UI requirements, both course and employment statuses are required
+		// based on UI requirements, both course and employment status are required
 		// first check that a course is selected
 		if (courses == null || courses.length < 1) {
 			response.setStatus(HttpStatus.SC_BAD_REQUEST);
@@ -72,9 +73,12 @@ public class RegistrationServlet extends HttpServlet {
 		} else {
 			// store information
 			registrationService.setRegistrationInfo(name, email, courses, employmentStatus, hotel, parking);
+			HttpSession session = request.getSession();
+			session.setAttribute("courses", courses);
 			
 			// send the registration information 
-			request.setAttribute("registrationInfo", registrationService.getRegistrationInfo());
+			session.setAttribute("registrationInfo", registrationService.getRegistrationInfo());
+			session.setAttribute("costInfo", registrationService.getRegistrationInfo().getCostInfo());
 			
 			// forward the request to results.jsp		
 			String url = "/devseminar/results.jsp";

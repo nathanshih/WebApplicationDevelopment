@@ -6,18 +6,14 @@
 	<meta charset="ISO-8859-1">
     <title>Development Seminar</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="functions.js"></script>
 </head>
 
 <body>
-	
-	<%@ page import="devseminar.model.RegistrationInfo" %>
-	<%@	page import="devseminar.model.CostInfo" %>
-	
-	<%
-		// get attributes from the request
-		RegistrationInfo registrationInfo = (RegistrationInfo) request.getAttribute("registrationInfo");
-	%>
+
+	<jsp:useBean id="registrationInfo" scope="session" class="devseminar.model.RegistrationInfo" />
+	<jsp:useBean id="costInfo" scope="session" class="devseminar.model.CostInfo" />
 	
     <div class="main">
         <img src="../images/jhu.jpg">
@@ -25,32 +21,32 @@
         <h3>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h3>
         
         <div class="output">
-        	<b><%= registrationInfo.getName() %></b>
+        	<b><jsp:getProperty name="registrationInfo" property="name"/></b>
         </div>
 
         <div class="output">
-        	You are registered as a <b><%= registrationInfo.getEmploymentStatus() %></b>.
+        	You are registered as a <b><jsp:getProperty name="registrationInfo" property="employmentStatus"/></b>.
         </div>
 
         <div class="output">
-        	Your e-mail confirmation will be sent to: <b><%= registrationInfo.getEmail() %></b>.
+        	Your e-mail confirmation will be sent to: <b><jsp:getProperty name="registrationInfo" property="email"/></b>.
         </div>
 
         <table>
         	<tr>
         		<th>Your Courses</th>
-        		<th></th>
         		<th>Cost</th>
+        		<th></th>
         	</tr>
        	<%
+       		String[] courses = registrationInfo.getCourses();
        		// loop through the courses selected and build out the table
-       		String[] courses  = registrationInfo.getCourses();
        		for (int i = 0; i < courses.length; i++) {
         %>
         	<tr>
-        		<td><%= courses[i]%></td>
-        		<td></td>
-        		<td class="money">$<%= registrationInfo.getCostInfo().getEmployeeStatusCost() %>0</td>
+        		<td><%= courses[i] %></td>
+        		<td class="money">$<jsp:getProperty name="costInfo" property="employeeStatusCost"/>0</td>
+        		<td><button class="remove" value=<%= courses[i] %>>Remove</button></td>       		
         	</tr>
         <%
         	}
@@ -66,7 +62,7 @@
 		%>
 			<tr>
 				<td>Hotel Accommodation</td>
-				<td class="money">$<%= CostInfo.HOTEL %>0</td>
+				<td class="money">$<jsp:getProperty name="costInfo" property="hotelCost"/>0</td>
 			</tr>
 		<%
 			}
@@ -77,14 +73,14 @@
 		%>
 			<tr>
 				<td>Parking</td>
-				<td class="money">$<%= CostInfo.PARKING %>0</td>
+				<td class="money">$<jsp:getProperty name="costInfo" property="parkingCost"/>0</td>
 			</tr>
 		<%
 			}
 		%>
 			<tr>
 				<td></td>
-				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$<%= registrationInfo.getCostInfo().getTotal() %>0</b></td>
+				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$<jsp:getProperty name="costInfo" property="total"/>0</b></td>
 			</tr>
 		</table>
 		
