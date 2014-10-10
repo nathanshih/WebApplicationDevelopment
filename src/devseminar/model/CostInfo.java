@@ -1,4 +1,4 @@
-package hw4.model;
+package devseminar.model;
 
 /**
  * This model class holds information relevant to registration cost information.

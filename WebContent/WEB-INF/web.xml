@@ -12,6 +12,6 @@
   
   <servlet>
   	<servlet-name>RegistrationServlet</servlet-name>
-  	<servlet-class>hw4.controller.RegistrationServlet</servlet-class>
+  	<servlet-class>devseminar.controller.RegistrationServlet</servlet-class>
   </servlet>
 </web-app>
