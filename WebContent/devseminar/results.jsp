@@ -86,7 +86,7 @@
 		
 		<br>
 		
-        <input id="submit" type="submit" value="Back" onclick="goBack()">
+        <input id="edit" type="submit" value="Edit Information">
     </div>
 
 </body>
