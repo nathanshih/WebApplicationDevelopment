@@ -1,12 +1,12 @@
 /**
  * 
  */
-package hw4.service;
-
-import hw4.model.CostInfo;
-import hw4.model.RegistrationInfo;
+package devseminar.service;
 
 import org.apache.commons.lang3.StringUtils;
+
+import devseminar.model.CostInfo;
+import devseminar.model.RegistrationInfo;
 
 /**
  * The implementation of the business logic.

@@ -11,8 +11,8 @@
 
 <body>
 	
-	<%@ page import="hw4.model.RegistrationInfo" %>
-	<%@	page import="hw4.model.CostInfo" %>
+	<%@ page import="devseminar.model.RegistrationInfo" %>
+	<%@	page import="devseminar.model.CostInfo" %>
 	
 	<%
 		// get attributes from the request

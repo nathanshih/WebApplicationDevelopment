@@ -1,7 +1,4 @@
-package hw4.controller;
-
-import hw4.service.RegistrationService;
-import hw4.service.RegistrationServiceImpl;
+package devseminar.controller;
 
 import java.io.IOException;
 
@@ -17,13 +14,16 @@ import org.apache.http.HttpHeaders;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
 
+import devseminar.service.RegistrationService;
+import devseminar.service.RegistrationServiceImpl;
+
 /**
  * RegistrationServlet handling all requests and responses. This is the main entry point to registration servlet.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-@WebServlet("/hw4/registration")
+@WebServlet("/devseminar/registration")
 public class RegistrationServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -77,7 +77,7 @@ public class RegistrationServlet extends HttpServlet {
 			request.setAttribute("registrationInfo", registrationService.getRegistrationInfo());
 			
 			// forward the request to results.jsp		
-			String url = "/hw4/results.jsp";
+			String url = "/devseminar/results.jsp";
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		}

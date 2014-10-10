@@ -1,6 +1,6 @@
-package hw4.service;
+package devseminar.service;
 
-import hw4.model.RegistrationInfo;
+import devseminar.model.RegistrationInfo;
 
 /**
  * The RegistrationService interface provides entry points to the registration service business logic.
