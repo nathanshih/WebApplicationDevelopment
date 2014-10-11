@@ -1,6 +1,7 @@
 package devseminar.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * This model class holds information relevant to the registration information.
@@ -14,7 +15,7 @@ public class RegistrationInfo implements Serializable {
 
 	private String name;
 	private String email;
-	private String[] courses;
+	private List<String> courses;
 	private String employmentStatus;
 	private String hotel;
 	private String parking;
@@ -32,10 +33,10 @@ public class RegistrationInfo implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String[] getCourses() {
+	public List<String> getCourses() {
 		return courses;
 	}
-	public void setCourses(String[] courses) {
+	public void setCourses(List<String> courses) {
 		this.courses = courses;
 	}
 	public String getEmploymentStatus() {

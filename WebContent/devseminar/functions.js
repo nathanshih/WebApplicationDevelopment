@@ -2,13 +2,16 @@ $(document).ready(function() {
 	
 	$(".remove").click(function() {
 		$.ajax({
-			url: "registration",
+			url: "remove",
 			data: "course=" + $(this).attr("value"),
-			type: "POST"
+			type: "POST",
+			success: function() {
+				window.location.reload(false);
+			}
 		});
 	});
 	
-    $("#edit").click(function(){
+    $(".edit").click(function(){
         parent.history.back();
         return false;
     });

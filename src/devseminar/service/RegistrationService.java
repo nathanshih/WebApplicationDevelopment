@@ -1,5 +1,8 @@
 package devseminar.service;
 
+import java.util.List;
+
+import devseminar.model.CostInfo;
 import devseminar.model.RegistrationInfo;
 
 /**
@@ -30,8 +33,28 @@ public interface RegistrationService {
 	 */
 	public void setRegistrationInfo(String name,
 									String email,
-									String[] courses,
+									List<String> courses,
 									String employmentStatus,
 									String hotel,
 									String parking);
+	/**
+	 * Returned the stored cost information.
+	 *
+	 * @return CostInfo
+	 */
+	public CostInfo getCostInfo();
+	
+	/**
+	 * Removes a selected course.
+	 *
+	 * @param course - name of the course to remove
+	 */
+	public void removeCourse(String course);
+	
+	/**
+	 * Return the courses as a String array.
+	 *
+	 * @return String[]
+	 */
+	public String[] getCourses();
 }

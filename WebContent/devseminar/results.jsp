@@ -12,8 +12,7 @@
 
 <body>
 
-	<jsp:useBean id="registrationInfo" scope="session" class="devseminar.model.RegistrationInfo" />
-	<jsp:useBean id="costInfo" scope="session" class="devseminar.model.CostInfo" />
+	<jsp:useBean id="registrationService" scope="session" class="devseminar.service.RegistrationServiceImpl" />
 	
     <div class="main">
         <img src="../images/jhu.jpg">
@@ -21,15 +20,15 @@
         <h3>JOHNS HOPKINS ANNUAL SOFTWARE DEVELOPMENT SEMINAR</h3>
         
         <div class="output">
-        	<b><jsp:getProperty name="registrationInfo" property="name"/></b>
+        	<b><%= registrationService.getRegistrationInfo().getName() %></b>
         </div>
 
         <div class="output">
-        	You are registered as a <b><jsp:getProperty name="registrationInfo" property="employmentStatus"/></b>.
+        	You are registered as a <b><%= registrationService.getRegistrationInfo().getEmploymentStatus() %></b>.
         </div>
 
         <div class="output">
-        	Your e-mail confirmation will be sent to: <b><jsp:getProperty name="registrationInfo" property="email"/></b>.
+        	Your e-mail confirmation will be sent to: <b><%= registrationService.getRegistrationInfo().getEmail() %></b>.
         </div>
 
         <table>
@@ -39,14 +38,14 @@
         		<th></th>
         	</tr>
        	<%
-       		String[] courses = registrationInfo.getCourses();
+       		String[] courses = registrationService.getCourses();
        		// loop through the courses selected and build out the table
        		for (int i = 0; i < courses.length; i++) {
         %>
         	<tr>
         		<td><%= courses[i] %></td>
-        		<td class="money">$<jsp:getProperty name="costInfo" property="employeeStatusCost"/>0</td>
-        		<td><button class="remove" value=<%= courses[i] %>>Remove</button></td>       		
+        		<td class="money">$<%= registrationService.getRegistrationInfo().getCostInfo().getEmployeeStatusCost() %>0</td>
+        		<td><button class="remove" value="<%= courses[i] %>">Remove</button></td>       		
         	</tr>
         <%
         	}
@@ -58,35 +57,37 @@
 		<table>
 		<% 
 			// if the user selected a hotel, add that as a table record
-			if (registrationInfo.getHotel() != null) {
+			if (registrationService.getRegistrationInfo().getHotel() != null) {
 		%>
 			<tr>
 				<td>Hotel Accommodation</td>
-				<td class="money">$<jsp:getProperty name="costInfo" property="hotelCost"/>0</td>
+				<td class="money">$<%= registrationService.getRegistrationInfo().getCostInfo().getHotelCost() %>0</td>
 			</tr>
 		<%
 			}
 		%>
 		<% 
 			// if the user selected parking, add that as a table record
-			if (registrationInfo.getParking() != null) {
+			if (registrationService.getRegistrationInfo().getParking() != null) {
 		%>
 			<tr>
 				<td>Parking</td>
-				<td class="money">$<jsp:getProperty name="costInfo" property="parkingCost"/>0</td>
+				<td class="money">$<%= registrationService.getRegistrationInfo().getCostInfo().getParkingCost() %>0</td>
 			</tr>
 		<%
 			}
 		%>
 			<tr>
 				<td></td>
-				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$<jsp:getProperty name="costInfo" property="total"/>0</b></td>
+				<td class="money"><b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$<%= registrationService.getRegistrationInfo().getCostInfo().getTotal() %>0</b></td>
 			</tr>
 		</table>
 		
 		<br>
 		
-        <input id="edit" type="submit" value="Edit Information">
+        <input id="edit" class="edit" type="submit" value="Edit Information">
+        <input id="add" class="edit" type="submit" value="Add More Courses">
+        <input id="confirm" type="submit" value="Confirm Registration">
     </div>
 
 </body>

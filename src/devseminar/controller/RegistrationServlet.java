@@ -1,8 +1,9 @@
 package devseminar.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import devseminar.service.RegistrationService;
 import devseminar.service.RegistrationServiceImpl;
 
 /**
- * RegistrationServlet handling all requests and responses. This is the main entry point to registration servlet.
+ * This servlet handles all registration requests and responses.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
@@ -53,14 +54,14 @@ public class RegistrationServlet extends HttpServlet {
 		// get request parameters
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		String[] courses = request.getParameterValues("courses");
+		List<String> courses = Arrays.asList(request.getParameterValues("courses"));
 		String employmentStatus = request.getParameter("employmentStatus");
 		String hotel = request.getParameter("hotel");
 		String parking = request.getParameter("parking");
 		
 		// based on UI requirements, both course and employment status are required
 		// first check that a course is selected
-		if (courses == null || courses.length < 1) {
+		if (courses == null || courses.isEmpty()) {
 			response.setStatus(HttpStatus.SC_BAD_REQUEST);
 			response.getOutputStream().print("At least 1 course must be selected.");
 
@@ -73,17 +74,14 @@ public class RegistrationServlet extends HttpServlet {
 		} else {
 			// store information
 			registrationService.setRegistrationInfo(name, email, courses, employmentStatus, hotel, parking);
-			HttpSession session = request.getSession();
-			session.setAttribute("courses", courses);
+								
+			// send the registration information
+			HttpSession session = request.getSession();	
+			session.setAttribute("registrationService", registrationService);
 			
-			// send the registration information 
-			session.setAttribute("registrationInfo", registrationService.getRegistrationInfo());
-			session.setAttribute("costInfo", registrationService.getRegistrationInfo().getCostInfo());
-			
-			// forward the request to results.jsp		
-			String url = "/devseminar/results.jsp";
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-			dispatcher.forward(request, response);
+			// send data to results.jsp		
+			String url = request.getContextPath() + "/devseminar/results.jsp";
+			response.sendRedirect(url);
 		}
 	}
 }

@@ -1,13 +1,17 @@
 package devseminar.model;
 
+import java.io.Serializable;
+
 /**
  * This model class holds information relevant to registration cost information.
  *
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-public class CostInfo {
+public class CostInfo implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	// constants
 	public static final double EMPLOYEE = 850.00;
 	public static final double STUDENT = 1000.00;
