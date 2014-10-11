@@ -2,16 +2,13 @@ package devseminar.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpPost;
 
 import devseminar.service.RegistrationService;
 
@@ -36,10 +33,10 @@ public class RemoveCourseServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// method not used so return actionable response to caller
-		response.setStatus(HttpStatus.SC_METHOD_NOT_ALLOWED);
-		response.setHeader(HttpHeaders.ALLOW, HttpPost.METHOD_NAME);
-		response.getOutputStream().print("Use " + HttpPost.METHOD_NAME + " method instead.");
+		// send data to results.jsp
+		String url = "/devseminar/results.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,7 +53,10 @@ public class RemoveCourseServlet extends HttpServlet {
 		session.setAttribute("registrationService", registrationService);
 		
 		// send data to results.jsp		
-		String url = request.getContextPath() + "/devseminar/results.jsp";
-		response.sendRedirect(url);
+		//String url = request.getContextPath() + "/devseminar/results.jsp";
+		//response.sendRedirect(url);
+		String url = "/devseminar/results.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 }

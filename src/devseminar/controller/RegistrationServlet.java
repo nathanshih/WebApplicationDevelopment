@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpHeaders;
 import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.HttpPost;
 
 import devseminar.service.RegistrationService;
 import devseminar.service.RegistrationServiceImpl;
@@ -40,10 +39,10 @@ public class RegistrationServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// method not used so return actionable response to caller
-		response.setStatus(HttpStatus.SC_METHOD_NOT_ALLOWED);
-		response.setHeader(HttpHeaders.ALLOW, HttpPost.METHOD_NAME);
-		response.getOutputStream().print("Use " + HttpPost.METHOD_NAME + " method instead.");
+		// send data to results.jsp
+		String url = "/devseminar/results.jsp";
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -79,9 +78,10 @@ public class RegistrationServlet extends HttpServlet {
 			HttpSession session = request.getSession();	
 			session.setAttribute("registrationService", registrationService);
 			
-			// send data to results.jsp		
-			String url = request.getContextPath() + "/devseminar/results.jsp";
-			response.sendRedirect(url);
+			// send data to results.jsp
+			String url = "/devseminar/results.jsp";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+			dispatcher.forward(request, response);
 		}
 	}
 }

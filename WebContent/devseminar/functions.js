@@ -6,7 +6,7 @@ $(document).ready(function() {
 			data: "course=" + $(this).attr("value"),
 			type: "POST",
 			success: function() {
-				window.location.reload(false);
+				window.location.href = window.location.href;
 			}
 		});
 	});
