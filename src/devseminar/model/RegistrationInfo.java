@@ -1,6 +1,5 @@
 package devseminar.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,9 +8,7 @@ import java.util.List;
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-public class RegistrationInfo implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+public class RegistrationInfo {
 
 	private String name;
 	private String email;
