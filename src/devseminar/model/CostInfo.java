@@ -7,7 +7,7 @@ package devseminar.model;
  * @date Sep 24, 2014
  */
 public class CostInfo {
-
+	
 	// constants
 	public static final double EMPLOYEE = 850.00;
 	public static final double STUDENT = 1000.00;
@@ -18,6 +18,10 @@ public class CostInfo {
 	
 	private double employeeStatusCost;
 	private double total;
+	@SuppressWarnings("unused")
+	private double hotelCost;
+	@SuppressWarnings("unused")
+	private double parkingCost;
 	
 	public double getEmployeeStatusCost() {
 		return employeeStatusCost;
@@ -30,5 +34,11 @@ public class CostInfo {
 	}
 	public void setTotal(double total) {
 		this.total = total;
+	}
+	public double getHotelCost() {
+		return HOTEL;
+	}
+	public double getParkingCost() {
+		return PARKING;
 	}
 }

@@ -1,7 +1,8 @@
-/**
- * 
- */
 package devseminar.service;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,8 +15,10 @@ import devseminar.model.RegistrationInfo;
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-public class RegistrationServiceImpl implements RegistrationService {
+public class RegistrationServiceImpl implements RegistrationService, Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private RegistrationInfo registrationInfo;
 	
 	public RegistrationServiceImpl() {
@@ -30,7 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	@Override
 	public void setRegistrationInfo(String name, 
 									String email,
-									String[] courses, 
+									List<String> courses, 
 									String employmentStatus, 
 									String hotel,
 									String parking) {
@@ -42,6 +45,33 @@ public class RegistrationServiceImpl implements RegistrationService {
 		registrationInfo.setHotel(hotel);
 		registrationInfo.setParking(parking);		   	
 		registrationInfo.setCostInfo(calculateCostInfo());
+	}
+	
+	@Override
+	public CostInfo getCostInfo() {
+		return registrationInfo.getCostInfo();
+	}
+	
+
+	@Override
+	public void removeCourse(String course) {
+		
+		// remove the course
+		List<String> courses = new LinkedList<String>();
+		courses.addAll(registrationInfo.getCourses());	
+		courses.remove(course);
+		registrationInfo.setCourses(courses);
+		
+		// recalculate cost information
+		registrationInfo.setCostInfo(calculateCostInfo());
+	}
+	
+	@Override
+	public String[] getCourses() {
+		String[] courses = new String[registrationInfo.getCourses().size()];
+		courses = registrationInfo.getCourses().toArray(courses);
+		
+		return courses;
 	}
 	
 	/**
@@ -66,9 +96,9 @@ public class RegistrationServiceImpl implements RegistrationService {
     	// calculate total cost
     	double total = 0.0;
     	
-    	String[] courses = registrationInfo.getCourses();
+    	List<String> courses = registrationInfo.getCourses();
     	// total up cost of courses given employment status
-    	total = costInfo.getEmployeeStatusCost() * courses.length;
+    	total = costInfo.getEmployeeStatusCost() * courses.size();
     	
     	// if selected hotel, add to total
     	if (!StringUtils.isEmpty(registrationInfo.getHotel())) {
