@@ -5,8 +5,6 @@
 <head>
     <title>Development Seminar</title>
     <link href="style.css" rel="stylesheet" type="text/css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="functions.js"></script>
 </head>
 
 <body>
@@ -27,7 +25,13 @@
         </div>
 
         <div class="output">
-        	Your e-mail confirmation will be sent to: <b><%= registrationService.getRegistrationInfo().getEmail() %></b>.
+        	An e-mail confirmation will be sent to: 
+        	<b><a href="mailto:<%= registrationService.getRegistrationInfo().getEmail() %>"><%= registrationService.getRegistrationInfo().getEmail() %></a></b>.
+        </div>
+        
+        <div class="output">
+        	If you do not receive the e-mail confirmation or if you need to update your registration information, please contact
+        	the conference committee at <a href="mailto:registration@seminar.jhu.edu">registration@seminar.jhu.edu</a> or at (410) 410-4100.
         </div>
 
         <table>
@@ -43,8 +47,7 @@
         %>
         	<tr>
         		<td><%= courses[i] %></td>
-        		<td class="money">$<%= registrationService.getRegistrationInfo().getCostInfo().getEmployeeStatusCost() %>0</td>
-        		<td><button class="remove" value="<%= courses[i] %>">Remove</button></td>       		
+        		<td class="money">$<%= registrationService.getRegistrationInfo().getCostInfo().getEmployeeStatusCost() %>0</td>      		
         	</tr>
         <%
         	}
@@ -84,9 +87,6 @@
 		
 		<br>
 		
-        <input id="edit" class="edit" type="submit" value="Edit Information">
-        <input id="add" class="edit" type="submit" value="Add More Courses">
-        <input id="confirm" type="submit" value="Confirm Registration">
     </div>
 
 </body>
