@@ -1,6 +1,7 @@
 package devseminar.mailutils;
 
 import java.util.Properties;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 

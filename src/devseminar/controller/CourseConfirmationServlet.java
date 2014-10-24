@@ -45,7 +45,7 @@ public class CourseConfirmationServlet extends HttpServlet {
 		// send the email
 		try {
 			MailUtilGmail.sendMail(registrationService.getRegistrationInfo().getEmail(), 
-								   "DO-NOT-REPLY@jhu.edu", 
+								   "noreply", 
 								   "JHU Software Development Seminar Registration Confirmation", 
 								   "Your registration is confirmed for the JHU Software Development Seminar.", 
 								   false);
