@@ -1,6 +1,5 @@
 package devseminar.service;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,9 +14,7 @@ import devseminar.model.RegistrationInfo;
  * @author Nathan Shih
  * @date Sep 24, 2014
  */
-public class RegistrationServiceImpl implements RegistrationService, Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class RegistrationServiceImpl implements RegistrationService {
 	
 	private RegistrationInfo registrationInfo;
 	

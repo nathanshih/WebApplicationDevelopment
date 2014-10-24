@@ -18,4 +18,8 @@
   	<servlet-name>RemoveCourseServlet</servlet-name>
   	<servlet-class>devseminar.controller.RemoveCourseServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CourseConfirmationServlet</servlet-name>
+    <servlet-class>devseminar.controller.CourseConfirmationServlet</servlet-class>
+  </servlet>
 </web-app>

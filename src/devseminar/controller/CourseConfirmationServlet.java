@@ -2,6 +2,7 @@ package devseminar.controller;
 
 import java.io.IOException;
 
+import javax.mail.MessagingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,20 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import devseminar.mailutils.MailUtilGmail;
 import devseminar.service.RegistrationService;
 
 /**
- * This servlet handles removing selected courses.
+ * This servlet handles sending of the confirmation email.
  *
  * @author Nathan Shih
- * @date Oct 10, 2014
+ * @date Oct 19, 2014
  */
-@WebServlet("/devseminar/remove")
-public class RemoveCourseServlet extends HttpServlet {
+@WebServlet("/devseminar/confirm")
+public class CourseConfirmationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	public RemoveCourseServlet() {
+	
+	public CourseConfirmationServlet() {
 		super();
 	}
 	
@@ -31,29 +33,28 @@ public class RemoveCourseServlet extends HttpServlet {
 		// do nothing
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// send data to results.jsp
-		String url = "/devseminar/results.jsp";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-		dispatcher.forward(request, response);
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// get the course to be removed
-		String course = request.getParameter("course");
 		
 		// get the registrationInfo bean from the session
 		HttpSession session = request.getSession();
 		RegistrationService registrationService = (RegistrationService) session.getAttribute("registrationService");
 		
-		// remove the course
-		registrationService.removeCourse(course);
+		// set the registrationService in the session variable
 		session.setAttribute("registrationService", registrationService);
 		
-		// send data to results.jsp
-		String url = "/devseminar/results.jsp";
+		// send the email
+		try {
+			MailUtilGmail.sendMail(registrationService.getRegistrationInfo().getEmail(), 
+								   "noreply", 
+								   "JHU Software Development Seminar Registration Confirmation", 
+								   "Your registration is confirmed for the JHU Software Development Seminar.", 
+								   false);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+
+		// send data to confirmation.jsp
+		String url = "/devseminar/confirmation.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

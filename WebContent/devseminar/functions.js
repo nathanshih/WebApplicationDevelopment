@@ -16,4 +16,13 @@ $(document).ready(function() {
         return false;
     });
     
+	$("#confirm").click(function() {
+		$.ajax({
+			url: "confirm",
+			type: "POST",
+			success: function() {
+				window.location = "confirmation.jsp";
+			}
+		});
+	});
 });
