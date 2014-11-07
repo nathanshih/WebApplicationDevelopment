@@ -4,9 +4,9 @@
 <html>
 <head>
     <title>Development Seminar</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="../styles/style.css" rel="stylesheet" type="text/css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="functions.js"></script>
+    <script src="../scripts/functions.js"></script>
 </head>
 
 <body>
@@ -85,8 +85,8 @@
 		<br>
 		
 		<div class="button">
-	        <input id="edit" class="edit" type="submit" value="Edit Information">
-	        <input id="add" class="edit" type="submit" value="Add More Courses">
+	        <input id="edit" class="back" type="submit" value="Edit Information">
+	        <input id="add" class="back" type="submit" value="Add More Courses">
 	        <input id="checkout" type="submit" value="Checkout">
 		</div>
     </div>

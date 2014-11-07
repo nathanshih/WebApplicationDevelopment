@@ -11,7 +11,7 @@ $(document).ready(function() {
 		});
 	});
 	
-    $(".edit").click(function(){
+    $(".back").click(function(){
     	parent.history.back();
     	return false;
     });
@@ -44,7 +44,7 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert("Please enter a valid credit card information.");
+			alert("Please enter valid credit card information.");
 		}
 	});
 	

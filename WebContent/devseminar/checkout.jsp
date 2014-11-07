@@ -5,10 +5,10 @@
 <head>
     <title>Development Seminar</title>
     <meta charset="utf-8">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="creditcardjs-v0.10.12.min.css" rel="stylesheet">
+    <link href="../styles/style.css" rel="stylesheet" type="text/css">
+    <link href="../styles/creditcardjs-v0.10.12.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="functions.js"></script>
+    <script src="../scripts/functions.js"></script>
 </head>
 
 <body>
@@ -99,11 +99,10 @@
 			</div>
 		</div>
 
-		<script src="creditcardjs-v0.10.12.min.js"></script>
+		<script src="../scripts/creditcardjs-v0.10.12.min.js"></script>
 		
 		<div class="button">
-	        <input id="edit" class="edit" type="submit" value="Edit Information">
-	        <input id="add" class="edit" type="submit" value="Add More Courses">
+	        <input id="back" class="back" type="submit" value="Back To Cart">
 	        <input id="confirm" type="submit" value="Confirm Registration">
         </div>
     </div>
