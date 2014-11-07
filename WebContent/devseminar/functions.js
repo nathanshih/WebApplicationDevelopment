@@ -12,17 +12,40 @@ $(document).ready(function() {
 	});
 	
     $(".edit").click(function(){
-        parent.history.back();
-        return false;
+    	parent.history.back();
+    	return false;
     });
-    
-	$("#confirm").click(function() {
+	
+	$("#checkout").click(function() {
 		$.ajax({
-			url: "confirm",
-			type: "POST",
 			success: function() {
-				window.location = "confirmation.jsp";
+				window.location = "checkout.jsp";
 			}
 		});
 	});
+    
+	/**
+	 * Confirm registration if credit card information is valid.
+	 */
+	$("#confirm").click(function() {
+		/**
+		 * Validation here checks for:
+		 * 1. Credit card entered passes the Luhn algorithm test
+		 * 2. Security code is at least 3 characters
+		 * 3. Name on card is supplied
+		 * 4. Expiration date is a future date
+		 */
+		if (creditcardjs.isValid()) {
+			$.ajax({
+				url: "confirm",
+				type: "POST",
+				success: function() {
+					window.location = "confirmation.jsp";
+				}
+			});
+		} else {
+			alert("Please enter a valid credit card information.");
+		}
+	});
+	
 });
