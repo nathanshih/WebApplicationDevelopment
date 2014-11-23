@@ -48,4 +48,23 @@ $(document).ready(function() {
 		}
 	});
 	
+	$("#pdf").click(function() {
+		$.ajax({
+			url: "pdf",
+			type: "GET",
+			success: function() {
+				window.open("pdf","_blank");
+			}
+		});
+	});
+	
+	$("#excel").click(function() {
+		$.ajax({
+			url: "excel",
+			type: "GET",
+			success: function() {
+				window.open("excel","_blank");
+			}
+		});
+	});
 });

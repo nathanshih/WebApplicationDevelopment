@@ -5,6 +5,8 @@
 <head>
     <title>Development Seminar</title>
     <link href="../styles/style.css" rel="stylesheet" type="text/css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../scripts/functions.js"></script>
 </head>
 
 <body>
@@ -87,6 +89,10 @@
 		
 		<br>
 		
+		<div class="button">
+	        <input id="pdf" type="submit" value="Print Confirmation in PDF">
+	        <input id="excel" type="submit" value="Print Confirmation in Excel">
+		</div>
     </div>
 
 </body>
