@@ -41,6 +41,12 @@ $(document).ready(function() {
 				type: "POST",
 				success: function() {
 					window.location = "confirmation.jsp";
+				},
+				// if email fails to send due to "Daily sending quota exceeded" error, continue anyway
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(xhr.responseText);
+					alert("Email failed to send. Proceeding to confirmation page.");
+					window.location = "confirmation.jsp";
 				}
 			});
 		} else {
